@@ -19,6 +19,16 @@ pip install mclustpy
 
 ## Usage
 
+```python
+import mclustpy
+import numpy as np
+
+data = np.random.rand(1000, 10)
+data.shape
+
+res = mclustpy.mclustpy(data, G=9, modelNames='EEE', random_seed=2020)
+```
+
 ### The mclustpy function takes the following parameters:
 
 - data: a 2D numpy array of data to be clustered.
