@@ -1,3 +1,5 @@
+![Python package](https://github.com/KalinNonchev/mclustpy/actions/workflows/python-package.yml/badge.svg) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/KalinNonchev/mclustpy/issues)
+
 # mclustpy
 
 mclustpy is a Python function for clustering data using the Mclust algorithm from the R package [mclust](https://www.rdocumentation.org/packages/mclust/versions/5.4.6/topics/Mclust). The function takes a 2D numpy array of data and returns a dictionary containing various output values computed by the Mclust algorithm.
