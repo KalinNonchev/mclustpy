@@ -20,13 +20,13 @@ pip install mclustpy
 ## Usage
 
 ```python
-import mclustpy
+from mclustpy import mclustpy
 import numpy as np
 
 data = np.random.rand(1000, 10)
 data.shape
 
-res = mclustpy.mclustpy(data, G=9, modelNames='EEE', random_seed=2020)
+res = mclustpy(data, G=9, modelNames='EEE', random_seed=2020)
 ```
 
 ### The mclustpy function takes the following parameters:
