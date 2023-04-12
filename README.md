@@ -1,4 +1,4 @@
-![Python package](https://github.com/KalinNonchev/mclustpy/actions/workflows/python-package.yml/badge.svg) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/KalinNonchev/mclustpy/issues)
+[![Downloads](https://static.pepy.tech/badge/mclustpy)](https://pepy.tech/project/mclustpy) ![Python package](https://github.com/KalinNonchev/mclustpy/actions/workflows/python-package.yml/badge.svg) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/KalinNonchev/mclustpy/issues)
 
 # mclustpy
 
