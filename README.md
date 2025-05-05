@@ -60,5 +60,5 @@ res = mclustpy(data, G=9, modelNames='EEE', random_seed=2020)
 For more info take a look at the original [mclust page](https://www.rdocumentation.org/packages/mclust/versions/5.4.6/topics/Mclust)
 
 
-####License Notice:
+#### License Notice:
 This package, mclustpy, is licensed under the MIT License. However, it depends on the R package mclust, which is licensed under the GNU General Public License (GPL ≥2). Users must ensure compliance with the GPL license when using mclustpy.
