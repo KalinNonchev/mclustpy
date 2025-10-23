@@ -1,3 +1,2 @@
 numpy
 rpy2
-mclustpy
