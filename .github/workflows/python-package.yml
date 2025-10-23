@@ -22,13 +22,10 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    # 👇 Add this step to install R
-    - name: Install R
+    - name: Install system dependencies for R and rpy2
       run: |
         sudo apt-get update
-        sudo apt-get install -y r-base
-        R --version
-        R RHOME
+        sudo apt-get install -y r-base libcurl4-openssl-dev libssl-dev libxml2-dev libbz2-dev liblzma-dev libpcre2-dev libtirpc-dev
 
     - name: Install Python dependencies
       run: |
