@@ -1,8 +1,21 @@
 import numpy as np
 import rpy2.robjects as robjects
-from rpy2.robjects import conversion, numpy2ri
 
-# Define a list of strings that specifies the names of the output values returned by the Mclust function.
+# Try importing the correct converter depending on rpy2 version
+try:
+    # Modern rpy2 (>=3.5)
+    from rpy2.robjects.conversion import localconverter
+    DEFAULT_CONVERTER = robjects.default_converter
+except ImportError:
+    # Older rpy2 (<3.5)
+    from rpy2.robjects import conversion
+    localconverter = conversion.localconverter
+    DEFAULT_CONVERTER = conversion.default_converter
+
+# NumPy converter
+from rpy2.robjects import numpy2ri
+
+# Define the names of the output elements returned by Mclust
 OUT_NAMES = [
     "call", "data", "modelName", "n", "d", "G", "BIC", "loglik", "df",
     "bic", "icl", "hypvol", "parameters", "z", "classification", "uncertainty"
@@ -37,8 +50,8 @@ def mclustpy(data, G=9, modelNames='EEE', random_seed=2020):
     robjects.r.library("mclust")
     rmclust = robjects.r['Mclust']
 
-    # Use modern conversion context (no warnings)
-    with conversion.localconverter(conversion.default_converter + numpy2ri.converter):
+    # Convert NumPy array to R matrix and run Mclust
+    with localconverter(DEFAULT_CONVERTER + numpy2ri.converter):
         res = rmclust(data, G, modelNames)
 
     # Convert to Python dictionary

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='mclustpy',
-      version='0.0.2',
+      version='0.0.3',
       description='Clustering using the mclust algorithm.',
       author='KalinNonchev',
       author_email='boo@foo.com',
