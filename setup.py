@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='mclustpy',
-      version='0.0.1',
+      version='0.0.2',
       description='Clustering using the mclust algorithm.',
       author='KalinNonchev',
       author_email='boo@foo.com',
@@ -13,5 +13,5 @@ setup(name='mclustpy',
       include_package_data=True,
       # external packages as dependencies,
       install_requires=['mclustpy'],
-      python_requires='>=3.6'
+      python_requires='>=3.8'
       )

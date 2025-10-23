@@ -1,50 +1,46 @@
 import numpy as np
 import rpy2.robjects as robjects
-import rpy2.robjects.numpy2ri
-import rpy2
+from rpy2.robjects import conversion, numpy2ri
 
-# Define a list of strings that specifies the names of the output values returned by the mclust function.
-OUT_NAMES = ["call", "data", "modelName", "n", "d", "G", "BIC", "loglik", "df", "bic", "icl", "hypvol", "parameters", "z", "classification", "uncertainty"]
+# Define a list of strings that specifies the names of the output values returned by the Mclust function.
+OUT_NAMES = [
+    "call", "data", "modelName", "n", "d", "G", "BIC", "loglik", "df",
+    "bic", "icl", "hypvol", "parameters", "z", "classification", "uncertainty"
+]
 
 
 def mclustpy(data, G=9, modelNames='EEE', random_seed=2020):
-    """\
-    Clustering using the mclust algorithm.
-    The parameters are the same as those in the R package mclust.
-    
+    """
+    Clustering using the mclust algorithm (R package 'mclust').
+
     Parameters
     ----------
     data : numpy.ndarray
-        A 2D array of the data to be clustered.
+        2D array of data to be clustered.
     G : int, optional
-        An integer specifying the maximum number of mixture components to be considered. Default is 9.
+        Maximum number of mixture components (default=9).
     modelNames : str, optional
-        A string specifying the model types to be considered. Default is 'EEE'.
+        Model type (default='EEE').
     random_seed : int, optional
-        An integer specifying the random seed for reproducibility. Default is 2020.
+        Random seed for reproducibility (default=2020).
 
     Returns
     -------
     dict
-        A dictionary containing the output values returned by the mclust function, with keys specified by OUT_NAMES.
+        Dictionary of results with keys specified by OUT_NAMES.
     """
-    
-    # Set the random seed.
+    # Set seeds
     np.random.seed(random_seed)
-    # Load the mclust library in R.
-    robjects.r.library("mclust")
+    robjects.r['set.seed'](random_seed)
 
-    # Activate numpy2ri to convert data between NumPy arrays and R objects.
-    rpy2.robjects.numpy2ri.activate()
-    # Set the random seed in R.
-    r_random_seed = robjects.r['set.seed']
-    r_random_seed(random_seed)
-    # Get the Mclust function from R.
+    # Load R library
+    robjects.r.library("mclust")
     rmclust = robjects.r['Mclust']
-    
-    # Run the Mclust function with the given parameters and convert the output to a dictionary.
-    res = rmclust(rpy2.robjects.numpy2ri.numpy2rpy(data), G, modelNames)
-    
+
+    # Use modern conversion context (no warnings)
+    with conversion.localconverter(conversion.default_converter + numpy2ri.converter):
+        res = rmclust(data, G, modelNames)
+
+    # Convert to Python dictionary
     res = dict(zip(OUT_NAMES, res))
-    
     return res
