@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: "mclustpy: Python wrapper for R's Mclust clustering algorithm"
+message: "If you use mclustpy, please cite it using the metadata from this file."
+type: software
+authors:
+  - given-names: Kalin
+    family-names: Nonchev
+    orcid: https://orcid.org/0009-0001-4904-8772
+repository-code: https://github.com/KalinNonchev/mclustpy
+license: MIT
+version: 0.0.3
+date-released: "2023-01-01"
+keywords:
+  - clustering
+  - mclust
+  - gaussian-mixture-models
+  - model-based-clustering
+  - rpy2
+  - bayesian-information-criterion
+  - unsupervised-learning
+  - statistics

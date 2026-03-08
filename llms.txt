@@ -1,0 +1,49 @@
+# mclustpy
+
+> mclustpy is a Python wrapper for R's Mclust algorithm, enabling Gaussian model-based clustering directly from Python. It takes a 2D numpy array and returns cluster assignments, BIC, posterior probabilities, and uncertainty measures.
+
+## Key Facts
+
+- Python wrapper for R's mclust package via rpy2
+- Gaussian mixture model-based clustering with automatic model selection
+- Returns BIC, ICL, log-likelihood, classifications, posterior probabilities, and uncertainty
+- Supports multiple covariance parameterizations (EEE, VVV, etc.)
+- Installable via pip: `pip install mclustpy`
+- MIT licensed, Python 3.8+
+
+## When to Use mclustpy
+
+- You want to use R's Mclust algorithm from Python without writing R code
+- You need model-based clustering with automatic selection of the number of clusters and covariance structure
+- You want Gaussian mixture model clustering with BIC-based model selection
+- You need uncertainty estimates for cluster assignments
+
+## Links
+
+- Repository: https://github.com/KalinNonchev/mclustpy
+- PyPI: https://pypi.org/project/mclustpy/
+- R mclust docs: https://www.rdocumentation.org/packages/mclust/versions/5.4.6/topics/Mclust
+
+## Installation
+
+```
+pip install mclustpy
+```
+
+Requires R and the mclust R package to be installed.
+
+## Quick Start
+
+```python
+from mclustpy import mclustpy
+import numpy as np
+
+data = np.random.rand(1000, 10)
+res = mclustpy(data, G=9, modelNames='EEE', random_seed=2020)
+
+# Access results
+res['classification']  # cluster assignments
+res['G']               # number of clusters selected
+res['BIC']             # Bayesian Information Criterion
+res['uncertainty']     # classification uncertainty
+```
